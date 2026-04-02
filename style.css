@@ -8,13 +8,12 @@ body {
     font-family: -apple-system, system-ui, sans-serif;
     background-color: var(--ios-bg);
     margin: 0;
-    color: #000;
     -webkit-tap-highlight-color: transparent;
 }
 
 .screen {
     padding: 20px;
-    padding-top: 60px;
+    padding-top: 70px;
     min-height: 100vh;
     box-sizing: border-box;
 }
@@ -35,45 +34,37 @@ header p { color: #8E8E93; margin-top: 0; }
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.1s;
 }
 
-.menu-card:active { transform: scale(0.95); }
 .menu-card .icon { font-size: 40px; margin-bottom: 10px; }
 .locked { opacity: 0.5; }
 
-/* Rechner Style */
 .nav-bar {
-    position: fixed; top: 0; left: 0; right: 0; height: 50px;
+    position: fixed; top: 0; left: 0; right: 0; height: 60px;
     background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);
     display: flex; align-items: center; padding: 0 15px; z-index: 100;
+    border-bottom: 1px solid #ddd;
 }
 
-.nav-bar button { color: var(--ios-blue); background: none; border: none; font-size: 16px; }
+.nav-bar button { color: var(--ios-blue); background: none; border: none; font-size: 17px; font-weight: 500; }
+.nav-bar h2 { font-size: 17px; flex-grow: 1; text-align: center; margin-right: 40px; }
 
-.container { background: white; padding: 20px; border-radius: 15px; margin-top: 10px; }
-.date-header { font-weight: bold; margin-bottom: 15px; color: #555; }
+.container { background: white; padding: 20px; border-radius: 15px; }
+.date-header { font-size: 12px; color: #8E8E93; margin-bottom: 15px; text-transform: uppercase; }
 
-.stamp-group {
-    border-bottom: 1px solid #EEE;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-.stamp-group h3 { font-size: 14px; color: var(--ios-blue); }
+.stamp-group { border-bottom: 1px solid #EEE; padding-bottom: 10px; margin-bottom: 15px; }
+.stamp-group h3 { font-size: 14px; color: var(--ios-blue); margin-top: 0; }
 
-.input-row {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
-}
+.input-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 
 input[type="number"] {
-    width: 60px; padding: 8px; border: 1px solid #CCC; border-radius: 8px; text-align: center; font-size: 16px;
+    width: 70px; padding: 8px; border: 1px solid #DDD; border-radius: 10px; 
+    text-align: center; font-size: 17px; background: #F9F9F9;
 }
 
-.total-section {
-    text-align: right; font-size: 20px; margin-top: 20px; border-top: 2px solid var(--ios-blue); padding-top: 10px;
-}
+.total-section { text-align: right; font-size: 20px; margin-top: 20px; border-top: 2px solid var(--ios-blue); padding-top: 10px; }
 
 .btn-save {
     width: 100%; background: #34C759; color: white; border: none; 
-    padding: 15px; border-radius: 12px; font-size: 18px; font-weight: bold; margin-top: 20px;
+    padding: 18px; border-radius: 15px; font-size: 18px; font-weight: bold; margin-top: 20px;
 }

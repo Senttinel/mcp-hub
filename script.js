@@ -4,38 +4,52 @@ function showScreen(screenId) {
     
     if(screenId === 'stamp-counter') {
         const d = new Date();
-        document.getElementById('current-date').innerText = "Zählung vom: " + d.toLocaleDateString() + " " + d.toLocaleTimeString();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+        document.getElementById('current-date').innerText = d.toLocaleDateString('de-DE', options);
     }
 }
 
 function calculate() {
-    // Werte holen
-    const t095 = parseFloat(document.getElementById('t095').value) || 0;
-    const k095 = parseFloat(document.getElementById('k095').value) || 0;
+    // 0,95 Steinbock
+    const t095s = parseFloat(document.getElementById('t095s').value) || 0;
+    const k095s = parseFloat(document.getElementById('k095s').value) || 0;
+    
+    // 0,95 Ballon
+    const t095b = parseFloat(document.getElementById('t095b').value) || 0;
+    const k095b = parseFloat(document.getElementById('k095b').value) || 0;
+
+    // 1,10 und 1,80
     const t110 = parseFloat(document.getElementById('t110').value) || 0;
     const k110 = parseFloat(document.getElementById('k110').value) || 0;
     const t180 = parseFloat(document.getElementById('t180').value) || 0;
     const k180 = parseFloat(document.getElementById('k180').value) || 0;
 
     // Berechnung (Packs * 10 Stück * Preis)
-    const sum095 = (t095 + k095) * 10 * 0.95;
+    const sum095s = (t095s + k095s) * 10 * 0.95;
+    const sum095b = (t095b + k095b) * 10 * 0.95;
     const sum110 = (t110 + k110) * 10 * 1.10;
     const sum180 = (t180 + k180) * 10 * 1.80;
 
-    const total = sum095 + sum110 + sum180;
+    const total = sum095s + sum095b + sum110 + sum180;
 
     document.getElementById('grand-total').innerText = total.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
 }
 
 function downloadImage() {
     const area = document.getElementById('capture-area');
+    
+    // Kleiner Fix für iOS Safari: Erst nach oben scrollen für sauberen Screenshot
+    window.scrollTo(0,0);
+
     html2canvas(area, {
         backgroundColor: "#FFFFFF",
-        scale: 2 // Bessere Qualität für das iPhone Display
+        scale: 3, // Extra scharf für das iPhone 12 Display
+        logging: false
     }).then(canvas => {
+        const image = canvas.toDataURL("image/png");
         const link = document.createElement('a');
-        link.download = `McPaper_Briefmarken_${new Date().toLocaleDateString()}.png`;
-        link.href = canvas.toDataURL("image/png");
+        link.download = `Briefmarken_Check_${new Date().toLocaleDateString()}.png`;
+        link.href = image;
         link.click();
     });
 }
