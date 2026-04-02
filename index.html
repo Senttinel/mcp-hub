@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>McPaper Hub</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div id="main-menu" class="screen">
+        <header>
+            <h1>McPaper Hub</h1>
+            <p>Willkommen zur Schicht</p>
+        </header>
+        <div class="grid">
+            <div class="menu-card" onclick="showScreen('stamp-counter')">
+                <div class="icon">✉️</div>
+                <span>Briefmarken</span>
+            </div>
+            <div class="menu-card locked">
+                <div class="icon">🔒</div>
+                <span>Inventur (Bald)</span>
+            </div>
+            <div class="menu-card locked">
+                <div class="icon">🔒</div>
+                <span>Kassensturz</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="stamp-counter" class="screen" style="display:none;">
+        <div class="nav-bar">
+            <button onclick="showScreen('main-menu')">← Zurück</button>
+            <h2>Briefmarken-Zählung</h2>
+        </div>
+
+        <div id="capture-area" class="container">
+            <div class="date-header" id="current-date"></div>
+            
+            <div class="stamp-group">
+                <h3>0,95 € Marken (10er Pack)</h3>
+                <div class="input-row">
+                    <label>Tresor (Packs):</label>
+                    <input type="number" id="t095" value="0" oninput="calculate()">
+                </div>
+                <div class="input-row">
+                    <label>Kasse (Packs):</label>
+                    <input type="number" id="k095" value="0" oninput="calculate()">
+                </div>
+            </div>
+
+            <div class="stamp-group">
+                <h3>1,10 € Marken (10er Pack)</h3>
+                <div class="input-row">
+                    <label>Tresor (Packs):</label>
+                    <input type="number" id="t110" value="0" oninput="calculate()">
+                </div>
+                <div class="input-row">
+                    <label>Kasse (Packs):</label>
+                    <input type="number" id="k110" value="0" oninput="calculate()">
+                </div>
+            </div>
+
+            <div class="stamp-group">
+                <h3>1,80 € Marken (10er Pack)</h3>
+                <div class="input-row">
+                    <label>Tresor (Packs):</label>
+                    <input type="number" id="t180" value="0" oninput="calculate()">
+                </div>
+                <div class="input-row">
+                    <label>Kasse (Packs):</label>
+                    <input type="number" id="k180" value="0" oninput="calculate()">
+                </div>
+            </div>
+
+            <div class="total-section">
+                <p>Gesamtwert: <strong id="grand-total">0,00 €</strong></p>
+            </div>
+        </div>
+
+        <button class="btn-save" onclick="downloadImage()">Bericht als PNG speichern</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
